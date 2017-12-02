@@ -62,10 +62,13 @@ myApiIdentityPoolRoleAttachment:
 (client-id is your UserPoolClient's Id aka App Client Id)
 
 `aws cognito-idp sign-up --client-id 2c3oeg83fon4g9q1n2s1jh1r2e --username johndoe@example.com --password P@ssw0rd!`
+
 OR:
+
 `aws cognito-idp sign-up --client-id 70clhgunebf0srlkjqpb3jop2h --username johndoe@example.com --user-attributes Name=email,Value=johndoe@example.com --password P@ssw0rd!`
 
 Returns:
+
 ```
 {
     "UserConfirmed": false, 
@@ -153,8 +156,12 @@ aws cognito-idp describe-user-pool-domain --domain 2l3k4j2lkj42l3k4j
 ### Useful links:
 
 https://serverless-stack.com/chapters/create-a-cognito-test-user.html
+
 https://stackoverflow.com/questions/44503800/how-to-export-cognito-user-pool-settings-to-cloudformation-template
+
 https://serverless-stack.com/chapters/cognito-user-pool-vs-identity-pool.html
+
 https://github.com/emdgroup/cfn-custom-resource
+
 
 
