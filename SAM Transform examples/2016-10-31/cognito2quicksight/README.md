@@ -17,13 +17,19 @@ Interesting to note:
 
 #### Commands:
 
-aws cloudformation package --template-file ./quicksight.yaml --output-template-file deploy.yaml --s3-bucket samplebucket4deploys
+`aws cloudformation package --template-file ./quicksight.yaml --output-template-file deploy.yaml --s3-bucket samplebucket4deploys`
 
-aws cloudformation deploy --template-file ./deploy.yaml --stack-name CognitoQuickSight --capabilities CAPABILITY_IAM
+`aws cloudformation deploy --template-file ./deploy.yaml --stack-name CognitoQuickSight --capabilities CAPABILITY_IAM`
 
-aws cloudformation describe-stacks --query 'Stacks[0].[Outputs[].[OutputKey,OutputValue]]|[]' --output text --stack-name CognitoQuickSight
+`aws cloudformation describe-stacks --query 'Stacks[0].[Outputs[].[OutputKey,OutputValue]]|[]' --output text --stack-name CognitoQuickSight`
 
-aws cognito-idp describe-user-pool-client --user-pool-id us-east-1_aP4uWJY6M --client-id 70clhgunebf0srlkjqpb3jop2h
+
+Here I'm describing the UserPoolClient resource:
+
+`aws cognito-idp describe-user-pool-client --user-pool-id us-east-1_aP4uWJY6M --client-id 70clhgunebf0srlkjqpb3jop2h`
+
+Results in:
+
 ```
 {
     "UserPoolClient": {
@@ -74,7 +80,10 @@ Same command but after configuring by hand the UserPoolClient:
     }
 }
 ```
-aws cognito-idp describe-user-pool-domain --domain 2l3k4j2lkj42l3k4j
+
+`aws cognito-idp describe-user-pool-domain --domain 2l3k4j2lkj42l3k4j`
+
+Returns:
 
 ```
 {
@@ -90,8 +99,9 @@ aws cognito-idp describe-user-pool-domain --domain 2l3k4j2lkj42l3k4j
 }
 ```
 
+I was doing some s3 bucket syncs with my index.html file while I tweaked some settings:
 
-aws s3 sync .  s3://cognitoquicksight-s3website-12p94ytls5f4u --acl public-read 
+`aws s3 sync .  s3://cognitoquicksight-s3website-12p94ytls5f4u --acl public-read`
 
-aws s3 ls s3://cognitoquicksight-s3website-12p94ytls5f4u
+`aws s3 ls s3://cognitoquicksight-s3website-12p94ytls5f4u`
 
