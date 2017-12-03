@@ -72,6 +72,7 @@
 		<div id="startButtons">
 			<div class="button">
 				<a class="nav-tabs" id="signInButton" href="javascript:void(0)" title="Sign in">Sign In</a>
+					<a class="nav-tabs" id="apiGetData" href="javascript:void(0)" title="API GET">API GET</a>
 			</div>
 		</div>
 		<div class="tab-content">
@@ -102,6 +103,9 @@
 		var auth = initCognitoSDK();
 		document.getElementById("signInButton").addEventListener("click", function() {
 			userButton(auth);
+		});
+		document.getElementById("apiGetData").addEventListener("click", function() {
+			apiButton(auth);
 		});
 		var curUrl = window.location.href;
 		auth.parseCognitoWebResponse(curUrl);
@@ -147,6 +151,18 @@
 		} else {
 			auth.getSession();
 		}
+	}
+	
+	// Performs a simple GET on our API endpoint.
+	function apiButton(auth) {
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4) {
+				alert("Data: " + this.responseText + "\nStatus: " + this.status);
+			}
+		};
+		xhttp.open("GET", "<INSERT THE API GW URL HERE FOR DOING A BASIC HELLO WORLD CALL>", true);
+		xhttp.send();
 	}
 
 	// Operations when signed in.
